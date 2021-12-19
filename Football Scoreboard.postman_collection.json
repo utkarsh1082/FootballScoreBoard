@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "858a1b38-536c-41fa-9974-29e6eae040c6",
+		"name": "Football Scoreboard",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Match",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/football/match?team1=Barcelona&team2=Real Madrid&duration=90",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"football",
+						"match"
+					],
+					"query": [
+						{
+							"key": "team1",
+							"value": "Barcelona"
+						},
+						{
+							"key": "team2",
+							"value": "Real Madrid"
+						},
+						{
+							"key": "start",
+							"value": "2021-12-19T22:00:00",
+							"disabled": true
+						},
+						{
+							"key": "duration",
+							"value": "90"
+						}
+					]
+				},
+				"description": "POST API to create a new Match, required args-> team1 name, team2 name and duration of match. Start time is not mandatory, if not provided current time is taken as start time."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Match Details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/football/match?id=BarcelonaReal Madrid2021-12-20",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"football",
+						"match"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "BarcelonaReal Madrid2021-12-20"
+						}
+					]
+				},
+				"description": "GET API call to get match details by providing match id"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Scoreboard for a match",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/football/score?id=BarcelonaReal Madrid2021-12-20",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"football",
+						"score"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "BarcelonaReal Madrid2021-12-20"
+						}
+					]
+				},
+				"description": "GET API call to get current scoreboard of match by match ID."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Scoreboard",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/football/score?id=BarcelonaReal Madrid2021-12-20&team=Barcelona",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"football",
+						"score"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "BarcelonaReal Madrid2021-12-20"
+						},
+						{
+							"key": "team",
+							"value": "Barcelona"
+						}
+					]
+				},
+				"description": "PUT API call tpo update the scoreboard by providing the match id and name of the team which scored the goal."
+			},
+			"response": []
+		}
+	]
+}
