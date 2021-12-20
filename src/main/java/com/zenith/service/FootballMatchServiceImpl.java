@@ -34,7 +34,7 @@ public class FootballMatchServiceImpl implements FootballMatchService {
 			throws InterruptedException, ExecutionException, CustomErrorException {
 		FootballMatch footballMatch = footballDao.getMatch(matchId);
 		if (footballMatch.isMatchEnded() == false
-				&& getTimeLeft(footballMatch.getStartTime(), footballMatch.getDuration()) < 0) {
+				&& getTimeLeft(footballMatch.getStartTime(), footballMatch.getDuration()) <= 0) {
 			footballMatch.setMatchEnded(true);
 		}
 		return footballMatch;
@@ -85,12 +85,15 @@ public class FootballMatchServiceImpl implements FootballMatchService {
 		return score;
 	}
 
-	private double getTimeLeft(String startTime, double duration) {
-		LocalDateTime endDateTime = LocalDateTime.parse(startTime).plusMinutes((long) duration);
-		long minutesLeft = (Duration.between(LocalDateTime.now(), endDateTime).getSeconds()) / 60;
-		if (minutesLeft < 0)
+	private double getTimeLeft(String startTime, double matchDuration) {
+		LocalDateTime endDateTime = LocalDateTime.parse(startTime).plusMinutes((long) matchDuration);
+		Duration duration = Duration.between(LocalDateTime.now(), endDateTime);
+		long minutes = duration.getSeconds() / 60;
+		long seconds = duration.getSeconds() % 60;
+		double timeLeft = minutes + Math.round(seconds * 100.0) / 10000.0;
+		if (timeLeft < 0)
 			return 0;
-		return minutesLeft;
+		return timeLeft;
 	}
 
 	private FootballMatch createNewMatch(String team1, String team2, String startTime, double duration) {
