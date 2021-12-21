@@ -39,6 +39,23 @@
 		    <artifactId>firebase-admin</artifactId>
 		    <version>7.1.1</version>
 		</dependency>
+		
+	    <dependency>
+	      <groupId>nl.martijndwars</groupId>
+	      <artifactId>web-push</artifactId>
+	      <version>5.1.1</version>
+	    </dependency>
+	    <dependency>
+	      <groupId>org.bouncycastle</groupId>
+	      <artifactId>bcprov-jdk15on</artifactId>
+	      <version>1.68</version>
+	    </dependency>
+	    <!-- https://mvnrepository.com/artifact/io.projectreactor/reactor-core -->
+		<dependency>
+		    <groupId>io.projectreactor</groupId>
+		    <artifactId>reactor-core</artifactId>
+		    <version>3.4.13</version>
+		</dependency>	    
 				
 	</dependencies>
 

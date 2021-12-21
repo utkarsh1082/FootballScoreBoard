@@ -91,6 +91,7 @@ public class FootballMatchController {
 	@GetMapping(value = "/match", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<FootballMatch> getMatch(@RequestParam(value = "id") String id)
 			throws InterruptedException, ExecutionException {
+	
 		FootballMatch footballMatch;
 		try {
 			InputValidator.validateGetMatch(id);
@@ -114,7 +115,6 @@ public class FootballMatchController {
 	public ResponseEntity<Score> getScore(@RequestParam(value = "id") String id)
 			throws InterruptedException, ExecutionException {
 		Score score;
-
 		try {
 			InputValidator.validateGetScore(id);
 		} catch (InvalidRequestParameters e) {
